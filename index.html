@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>For Ella ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0d0a0e;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-image: radial-gradient(circle at 50% 30%, #1a1118, #0d0a0e 80%);
+        }
+
+        .card {
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255, 240, 245, 0.03);
+            border-radius: 48px;
+            padding: 44px 34px 38px;
+            border: 1px solid rgba(255, 150, 180, 0.06);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            position: relative;
+        }
+
+        .hearts-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            border-radius: 48px;
+        }
+
+        .hearts-bg span {
+            position: absolute;
+            font-size: 1.6rem;
+            opacity: 0.04;
+            animation: floatUp 22s infinite linear;
+            bottom: -60px;
+        }
+
+        .hearts-bg span:nth-child(1) { left: 10%; animation-duration: 26s; font-size: 2.2rem; }
+        .hearts-bg span:nth-child(2) { left: 25%; animation-duration: 18s; font-size: 1.6rem; animation-delay: 4s; }
+        .hearts-bg span:nth-child(3) { left: 45%; animation-duration: 23s; font-size: 2.6rem; animation-delay: 7s; }
+        .hearts-bg span:nth-child(4) { left: 60%; animation-duration: 16s; font-size: 1.4rem; animation-delay: 2s; }
+        .hearts-bg span:nth-child(5) { left: 80%; animation-duration: 28s; font-size: 2rem; animation-delay: 10s; }
+        .hearts-bg span:nth-child(6) { left: 92%; animation-duration: 20s; font-size: 1.2rem; animation-delay: 5s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.04; }
+            100% { transform: translateY(-110vh) rotate(720deg); opacity: 0; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bitmoji {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(233, 30, 99, 0.2);
+            box-shadow: 0 0 30px rgba(233, 30, 99, 0.08);
+            object-fit: cover;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-bottom: 2px;
+        }
+
+        .bitmoji:hover {
+            border-color: rgba(233, 30, 99, 0.5);
+            box-shadow: 0 0 50px rgba(233, 30, 99, 0.15);
+            transform: scale(1.04) rotate(-2deg);
+        }
+
+        .click-label {
+            font-size: 0.6rem;
+            color: #7a5a68;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 300;
+            display: block;
+            margin-top: 2px;
+            animation: pulseText 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseText {
+            0%, 100% { opacity: 0.25; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.02); }
+        }
+
+        .heart {
+            font-size: 4.2rem;
+            display: block;
+            animation: beat 1.8s infinite;
+            cursor: pointer;
+            user-select: none;
+            margin: 0 0 2px;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 30px rgba(233, 30, 99, 0.1));
+        }
+
+        .heart:hover {
+            filter: drop-shadow(0 0 60px rgba(233, 30, 99, 0.25));
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.25); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            56% { transform: scale(1); }
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.6rem;
+            font-weight: 400;
+            color: #f0dce4;
+            text-shadow: 0 0 50px rgba(233, 30, 99, 0.08);
+            margin: 0;
+            letter-spacing: 2px;
+        }
+
+        .sub {
+            font-size: 0.8rem;
+            color: #8a6a78;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-weight: 300;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 150, 180, 0.04);
+            margin-bottom: 16px;
+        }
+
+        .sub .emoji-big {
+            font-size: 1.2rem;
+        }
+
+        .secret-box {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(233, 30, 99, 0.06);
+            border-radius: 24px;
+            padding: 0 24px;
+            margin: 0;
+            border: 1px solid rgba(233, 30, 99, 0);
+            transform: scale(0.92) translateY(-10px);
+        }
+
+        .secret-box.open {
+            max-height: 400px;
+            opacity: 1;
+            padding: 20px 24px;
+            margin: 10px 0 16px;
+            border: 1px solid rgba(233, 30, 99, 0.12);
+            transform: scale(1) translateY(0);
+        }
+
+        .secret-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #decad4;
+            font-weight: 300;
+        }
+
+        .secret-box p strong {
+            color: #f0b8c8;
+            font-weight: 500;
+        }
+
+        .secret-box .emoji-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .msg {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #dcc8d2;
+            font-weight: 300;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 24px 28px;
+            margin: 14px 0 22px;
+            border-left: 2px solid rgba(233, 30, 99, 0.15);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .msg:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-left-color: rgba(233, 30, 99, 0.35);
+            transform: translateX(5px) scale(1.005);
+        }
+
+        .msg strong {
+            color: #f0b8c8;
+            font-weight: 500;
+        }
+
+        .msg .click-msg {
+            display: block;
+            font-size: 0.6rem;
+            color: #7a5a68;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            font-weight: 300;
+            animation: pulseText 2.5s infinite ease-in-out;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin: 18px 0 24px;
+            text-align: left;
+        }
+
+        .reasons li {
+            list-style: none;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 12px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #d0b8c4;
+            border: 1px solid rgba(255, 150, 180, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 400;
+        }
+
+        .reasons li:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(233, 30, 99, 0.12);
+            transform: translateX(6px) scale(1.01);
+        }
+
+        .reasons li::before {
+            content: "♥";
+            font-size: 0.8rem;
+            opacity: 0.3;
+        }
+
+        .reasons li .click-sm {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #5a4050;
+            margin-left: auto;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .reasons li:hover .click-sm {
+            opacity: 0.6;
+        }
+
+        .reason-reply {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 0.9rem;
+            color: #c8a8b8;
+            text-align: center;
+            padding: 0 10px;
+            margin: 0;
+            transform: scale(0.92);
+        }
+
+        .reason-reply.open {
+            max-height: 80px;
+            opacity: 1;
+            padding: 8px 10px 2px;
+            margin: 2px 0 10px;
+            transform: scale(1);
+        }
+
+        .footer {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: #e0c8d4;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-top: 6px;
+            letter-spacing: 1px;
+        }
+
+        .footer:hover {
+            color: #f0d8e0;
+            text-shadow: 0 0 30px rgba(233, 30, 99, 0.08);
+            transform: scale(1.04);
+        }
+
+        .footer small {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 300;
+            color: #7a5a68;
+            letter-spacing: 1px;
+        }
+
+        .footer .dot {
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            background: #e91e63;
+            border-radius: 50%;
+            margin-left: 5px;
+            animation: blink 1.6s infinite;
+        }
+
+        .footer .click-footer {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.55rem;
+            color: #6a4a58;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 2px;
+            font-weight: 300;
+            animation: pulseText 2.5s infinite ease-in-out;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0.15; }
+            50% { opacity: 0.8; }
+        }
+
+        .bottom {
+            font-size: 0.7rem;
+            color: #4a3842;
+            letter-spacing: 3px;
+            font-weight: 300;
+            border-top: 1px solid rgba(255, 150, 180, 0.04);
+            padding-top: 16px;
+            margin-top: 14px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .bottom:hover {
+            color: #6a5060;
+            transform: scale(1.03);
+        }
+
+        .final {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+            margin-top: 6px;
+            transform: scale(0.85);
+        }
+
+        .final.open {
+            max-height: 300px;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .final .big {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.2rem;
+            color: #f0b8c8;
+            text-shadow: 0 0 50px rgba(233, 30, 99, 0.12);
+            animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.4) rotate(-5deg); opacity: 0; }
+            60% { transform: scale(1.1) rotate(2deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        .final .sub-text {
+            color: #a08898;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 4px;
+        }
+
+        .boring-emoji {
+            font-size: 1.8rem;
+            display: inline-block;
+            animation: wobble 3s infinite ease-in-out;
+        }
+
+        @keyframes wobble {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-8deg); }
+            75% { transform: rotate(8deg); }
+        }
+
+        @media (max-width: 500px) {
+            .card { padding: 28px 18px 24px; border-radius: 36px; }
+            h1 { font-size: 3.4rem; }
+            .msg { font-size: 0.95rem; padding: 18px; }
+            .reasons { grid-template-columns: 1fr; }
+            .reasons li { font-size: 0.85rem; padding: 10px 16px; }
+            .footer { font-size: 1.8rem; }
+            .heart { font-size: 3.6rem; }
+            .bitmoji { width: 100px; height: 100px; }
+            .secret-box.open { padding: 16px 18px; }
+            .secret-box p { font-size: 0.95rem; }
+            .final .big { font-size: 2.4rem; }
+            .reasons li .click-sm { opacity: 0.5; }
+            .boring-emoji { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="hearts-bg">
+        <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    </div>
+
+    <div class="content">
+
+        <!-- Bitmoji -->
+        <img src="images/Ella.png" alt="Ella" class="bitmoji" onclick="toggleSecret('secret1')" />
+        <span class="click-label">✦ click for my secret ✦</span>
+
+        <!-- Heart -->
+        <span class="heart" onclick="toggleSecret('secret1')">❤️</span>
+
+        <h1>Ella</h1>
+        <div class="sub">
+            my favorite person 
+            <span class="boring-emoji">🫠</span>
+        </div>
+
+        <!-- Secret 1 -->
+        <div class="secret-box" id="secret1">
+            <span class="emoji-icon">💖</span>
+            <p>
+                <strong>Ella,</strong> you're the best thing in my life.<br />
+                I love you more than you know. 
+                <span style="font-size:1.2rem;">😂</span>
+            </p>
+        </div>
+
+        <!-- Main message -->
+        <div class="msg" onclick="toggleSecret('secret2')">
+            I don't need a reason to love you.<br />
+            But if I had to pick one — it's everything about you.<br />
+            Your smile, your soul, your heart.<br />
+            You're my favorite part of every day.
+            <span class="click-msg">⟡ click for another secret ⟡</span>
+        </div>
+
+        <!-- Secret 2 -->
+        <div class="secret-box" id="secret2">
+            <span class="emoji-icon">🌹</span>
+            <p>
+                <strong>What I love most?</strong><br />
+                You make everything better just by being you.<br />
+                I'm so lucky you're mine. 
+                <span style="font-size:1.2rem;">🫠</span>
+            </p>
+        </div>
+
+        <!-- Reasons -->
+        <ul class="reasons">
+            <li onclick="showReply(this, 'Your laugh makes my whole day. 🥰')">
+                Your laugh <span class="click-sm">click</span>
+            </li>
+            <li onclick="showReply(this, 'You have the sweetest heart. 💕')">
+                Your kindness <span class="click-sm">click</span>
+            </li>
+            <li onclick="showReply(this, 'Your eyes say everything. 👀')">
+                Your eyes <span class="click-sm">click</span>
+            </li>
+            <li onclick="showReply(this, 'You never give up. 💪')">
+                Your strength <span class="click-sm">click</span>
+            </li>
+            <li onclick="showReply(this, 'Your hugs feel like home. 🏠')">
+                Your hugs <span class="click-sm">click</span>
+            </li>
+            <li onclick="showReply(this, 'Because you\'re you. ✨')">
+                Just you <span class="click-sm">click</span>
+            </li>
+        </ul>
+
+        <!-- Reply appears here -->
+        <div class="reason-reply" id="replyBox"></div>
+
+        <!-- Footer -->
+        <div class="footer" onclick="toggleFinal()">
+            forever yours <small>— always</small> <span class="dot"></span>
+            <span class="click-footer">⟡ click for the big one ⟡</span>
+        </div>
+
+        <!-- Final surprise -->
+        <div class="final" id="finalBox">
+            <div class="big">💕 I LOVE YOU ELLA 💕</div>
+            <div class="sub-text">
+                forever & always 
+                <span style="font-size:1.2rem;">🫠😂</span>
+            </div>
+        </div>
+
+        <div class="bottom" onclick="toggleFinal()">
+            ♥ from my heart to yours ♥
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function toggleSecret(id) {
+        const el = document.getElementById(id);
+        el.classList.toggle('open');
+    }
+
+    function showReply(el, text) {
+        const box = document.getElementById('replyBox');
+        
+        if (box.dataset.active === el.textContent.trim()) {
+            box.classList.remove('open');
+            box.textContent = '';
+            box.dataset.active = '';
+            return;
+        }
+
+        box.textContent = '💖 ' + text;
+        box.dataset.active = el.textContent.trim();
+        box.classList.add('open');
+    }
+
+    function toggleFinal() {
+        const el = document.getElementById('finalBox');
+        el.classList.toggle('open');
+        if (el.classList.contains('open')) {
+            setTimeout(() => {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 200);
+        }
+    }
+</script>
+
+</body>
+</html>
